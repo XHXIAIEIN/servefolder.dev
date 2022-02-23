@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
 	<meta charset="utf8">
-	<title>Serve folder for web development</title>
+	<title>用于Web开发的本地服务器</title>
 	<link rel="icon" type="image/svg+xml" href="favicon.svg">
 	<link rel="icon" type="image/png" href="favicon.png">
 	<link rel="stylesheet" href="index.css">
@@ -11,50 +11,50 @@
 <body>
 <div id="mainwrap">
 
-<h1 id="maintitle">Serve folder</h1>
-<p>Serve a local folder of files in your browser for easy testing without having to run a server.</p>
+<h1 id="maintitle">搭建本地服务器</h1>
+<p class="alignleft">基于您指定的本地文件夹，快速搭建一个适用于Web应用程序或网站的本地测试环境，而不必真正将它托管在远程服务器中。所有内容都只在本地进行，不会访问到互联网。</p>
 
-<noscript><strong>This page requires JavaScript to work, but it looks like JavaScript is disabled. Please enable JavaScript and try again.</strong></noscript>
+<noscript><strong>此页面需要启用 JavaScript 功能才能正常工作，但看起来您的浏览器将 JavaScript 功能被禁用了。请启用 JavaScript 功能并重试。</strong></noscript>
 
-<button id="pickfolder" hidden>Pick folder</button>
+<button id="pickfolder" hidden>选择文件夹</button>
 <br>
-<button id="uselastfolder" hidden>Use last folder</button>
+<button id="uselastfolder" hidden>最近使用的文件夹</button>
 <input type="file" webkitdirectory id="inputfolder" hidden>
 
 <div id="hostinfo">
-	<h2 id="hosttitle">Files in folder '<span id="foldername"></span>' are now hosted at:</h2>
+	<h2 id="hosttitle">当前项目 '<span id="foldername"></span>' 的 hosted 地址为：</h2>
 	<a href="" id="hostlink" target="_blank"></a>
-	<p>The link only works locally as long as this page is left open.</p>
+	<p>只要这个页面不被关闭，此链接就能在本地持续运作。</p>
 </div>
 
 <details>
-<summary>More information</summary>
-<h3>What is this?</h3>
-<p>This page lets you host a local folder with web development files, such as HTML, JavaScript and CSS, directly in your browser. It works using Service Workers: everything is served from your local system only, nothing is uploaded to a server, and your files are not shared with anybody else.</p>
+<summary>更多信息</summary>
+<h3>这个网站是做什么的？</h3>
+<p>它可以帮助你在浏览器直接托管一个 Web 应用程序或网站的本地文件夹，以供开发测试。例如文件夹里包含了 HTML、JavaScript和CSS 等文件内容。它的工作原理基于 Service Workers 模块，所有的内容都只会在你本地系统中运行，不会有任何东西上传到服务器，因此你的文件也不会被其他人访问到。</p>
 
-<h3>Why is it useful?</h3>
-<p>Web development files must be served via the HTTP protocol for most modern web platform features to work. Features like fetch and JavaScript Modules don't work when loaded from disk (on the <em>file:</em> protocol). In some enviroments running a HTTP server may be difficult or inconvenient, for example if you're on a system with limited permissions. Alternatively it's another quick way to quickly test some web development files.</p>
+<h3>为什么需要这个？</h3>
+<p>所有 Web 应用程序或网站都必须通过 HTTP 协议向服务器发送访问请求，才可以在大多数现代网络平台中正常的工作。而当你通过浏览器从本地磁盘中加载本地文件时，你可以在地址栏看到这个地址是以 <em>file://</em> 开头，因为 JavaScript 的 fetch 和 Modules 等模块都是基于 <em>file:</em> 协议进行访问，无法直接在本地环境中工作。另一方面，在某些特定的开发环境，有些开发者想独自运行一个HTTP 服务器可能比较困难或出现不太方便的情况。例如，当前测试环境没有足够的权限等。本网站提供的服务，也是另一种能够让开发者快速测试 Web 应用程序或网站的方案。</p>
 
-<h3>How does it work?</h3>
-<p>Click the big button at the top and choose a folder. Once chosen and any permission prompt approved, a link will appear. Click the link and it will open a new tab and load index.html if a file with that name exists, otherwise it will show the contents of the folder for browsing. This is particularly useful with HTML files, which are also able to load all sub-resources like they can on a normal web server, but this does not actually involve a HTTP server (it works using Service Workers). Note the provided link will only work so long as this page remains open &mdash; as soon as you close the page the link will stop working.</p>
+<h3>我该如何使用？</h3>
+<p>点击顶部的大按钮，选择一个文件夹页，然后浏览器可能会在窗口的顶部弹出授予访问权限的请求提示，权限被批准后，页面将生成一个链接。点击此链接，它将打开一个新的标签页，并自动加载文件夹中的 index.html。如果文件夹中不存在该名称的文件，它将展示此文件夹中的文件列表以供浏览。这对 HTML 文件特别有用，这些文件也能像托管到普通的网络服务器一样加载所有的资源，但在传输的过程中，并没有涉及到 HTTP 服务器，因为它使用 Service Workers 进行工作。需注意的是，此处提供的链接只有在这个页面保持打开的情况下才会生效，一旦你关闭这个页面，链接将停止访问。</p>
 
-<p>You can also open this tab multiple times and host different folders simultaneously. Additional tabs will host at a different URL for accessing different folders. This page also works offline and is installable in supported browsers.</p>
+<p>当然，你也可以同时打开多个标签页，用来同时托管不同的文件夹。额外的标签页将在不同的地址中托管。这个网站也可以在离线环境下工作，也支持安装为浏览器应用程序。</p>
 
-<h3>Limitations</h3>
-<p>A couple of known limitations are:</p>
+<h3>它有什么局限性？</h3>
+<p>这个网站也不是全能的，已知目前存在着几个使用限制:</p>
 <ul>
-	<li>The files are served from a subfolder. Serving from the origin root is not supported as it complicates loading this page and supporting multiple hosts.</li>
-	<li>The hosted files cannot register their own service worker. This is because the browser enforces that the SW script is loaded from the network, where it will return 404.</li>
+	<li>被托管的文件都是从一个子文件夹中进行访问。尚不支持直接从根文件夹搭建服务，因为它可能会使加载这个页面以及托管多个测试环境变得复杂。</li>
+	<li>被托管的文件不能注册自己的 Service Worker 客户端。因为浏览器强制要求 SW 脚本必须在 HTTPS 环境下运行，访问它将被返回404。</li>
 </ul>
-<p>However since the vast majority of web APIs will work, this should support most client-side web content, such as HTML5 games, static websites, and so on.</p>
+<p>尽管如此，由于绝大多数关于网络请求的 API 都能正常工作，它仍然支持绝大多数的网络应用程序，如 HTML5游戏、静态网站等。</p>
 
-<h3>Is my data kept private?</h3>
-<p>Yes. Your chosen files will not leave your computer. The files will not be accessible by anyone else, the provided link only works for you, and nothing is transmitted over a network while loading it. See the <a href="privacy-policy.html">privacy policy</a> for more information.</p>
+<h3>我的数据是保密的吗？</h3>
+<p>是的，你操作的文件不会离开你的电脑。这些文件不会被其他任何人访问到，此页面提供的链接也只能在您本地生效，它只为你工作，加载过程中也没有任何东西通过网络进行传输。如果你想知道更多的细节可以阅读 <a href="privacy-policy.html">隐私政策</a> 的说明。</p>
 
-<h3>Who made this?</h3>
-<p>Hi, I'm <a href="https://twitter.com/ashleygullen">@AshleyGullen</a>, founder of Scirra and lead developer on <a href="https://www.construct.net/">Construct</a>.</p>
+<h3>这网站是谁做的？</h3>
+<p>你好！我是 <a href="https://twitter.com/ashleygullen">@AshleyGullen</a>，我是 Scirra 公司的创始人，我们制作了一款游戏开发工具 <a href="https://www.construct.net/">Construct 3</a> ，我也是这个项目的主开发者。</p>
 
-<p><em>v1.2 &mdash; last updated December 22nd 2021 &mdash; <a href="https://github.com/AshleyScirra/servefolder.dev">View code on GitHub</a></em></p>
+<p>当前版本：<em>v1.2 &mdash; 上次更新时间：2021年12月22日 &mdash; <a href="https://github.com/AshleyScirra/servefolder.dev">访问 GitHub 主页</a></em></p>
 </details>
 
 <script src="idb-keyval.js" defer></script>

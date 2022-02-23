@@ -1,30 +1,30 @@
 # servefolder.dev
-Serve a local folder of files in your browser for easy testing without having to run a server.
+基于您指定的本地文件夹，快速搭建一个适用于Web应用程序或网站的本地测试环境，而不必真正将它托管在远程服务器中。所有内容都只在本地进行，不会访问到互联网。
 
-Try now at [servefolder.dev](https://servefolder.dev)!
+## 这个网站是做什么的？
+此网站 *servefolder.dev* 可以帮助你在浏览器直接托管一个 Web 应用程序或网站的本地文件夹，以供开发测试。例如文件夹里包含了 HTML、JavaScript和CSS 等文件内容。它的工作原理基于 Service Workers 模块，所有的内容都只会在你本地系统中运行，不会有任何东西上传到服务器，因此你的文件也不会被其他人访问到。
 
-## What is this?
-The page at *servefolder.dev* lets you host a local folder with web development files, such as HTML, JavaScript and CSS, directly in your browser. It works using Service Workers: everything is served from your local system only, nothing is uploaded to a server, and your files are not shared with anybody else.
+## 为什么需要这个？
+所有 Web 应用程序或网站都必须通过 HTTP 协议向服务器发送访问请求，才可以在大多数现代网络平台中正常的工作。而当你通过浏览器从本地磁盘中加载本地文件时，你可以在地址栏看到这个地址是以 *file://* 开头，因为 JavaScript 的 fetch 和 Modules 等模块都是基于 *file:* 协议进行访问，无法直接在本地环境中工作。另一方面，在某些特定的开发环境，有些开发者想独自运行一个HTTP 服务器可能比较困难或出现不太方便的情况。例如，当前测试环境没有足够的权限等。本网站提供的服务，也是另一种能够让开发者快速测试 Web 应用程序或网站的方案。
 
-## Why is it useful?
-Web development files must be served via the HTTP protocol for most modern web platform features to work. Features like fetch and JavaScript Modules don't work when loaded from disk (on the *file:* protocol). In some enviroments running a HTTP server may be difficult or inconvenient, for example if you're on a system with limited permissions. Alternatively it's another quick way to quickly test some web development files.
+## 我该如何使用？
+点击顶部的大按钮，选择一个文件夹页，然后浏览器可能会在窗口的顶部弹出授予访问权限的请求提示，权限被批准后，页面将生成一个链接。点击此链接，它将打开一个新的标签页，并自动加载文件夹中的 index.html。如果文件夹中不存在该名称的文件，它将展示此文件夹中的文件列表以供浏览。这对 HTML 文件特别有用，这些文件也能像托管到普通的网络服务器一样加载所有的资源，但在传输的过程中，并没有涉及到 HTTP 服务器，因为它使用 Service Workers 进行工作。需注意的是，此处提供的链接只有在这个页面保持打开的情况下才会生效，一旦你关闭这个页面，链接将停止访问。
+ 
+当然，你也可以同时打开多个标签页，用来同时托管不同的文件夹。额外的标签页将在不同的地址中托管。这个网站也可以在离线环境下工作，也支持安装为浏览器应用程序。
 
-## How does it work?
-Click the big button at the top of the page and choose a folder. Once chosen and any permission prompt approved, a link will appear. Click the link and it will open a new tab and load index.html if a file with that name exists, otherwise it will show the contents of the folder for browsing. This is particularly useful with HTML files, which are also able to load all sub-resources like they can on a normal web server, but this does not actually involve a HTTP server (it works using Service Workers). Note the provided link will only work so long as the page remains open &mdash; as soon as you close the page the link will stop working.
+## 它有什么局限性？
+这个网站也不是全能的，已知目前存在着几个使用限制:
 
-You can also open the page in multiple tabs and host different folders simultaneously. Additional tabs will host at a different URL for accessing different folders. The page also works offline and is installable in supported browsers.
+- 被托管的文件都是从一个子文件夹中进行访问。尚不支持直接从根文件夹搭建服务，因为它可能会使加载这个页面以及托管多个测试环境变得复杂。
+- 被托管的文件不能注册自己的 Service Worker 客户端。因为浏览器强制要求 SW 脚本必须在 HTTPS 环境下运行，访问它将被返回404。
 
-## Limitations
-A couple of known limitations are:
+尽管如此，由于绝大多数关于网络请求的 API 都能正常工作，它仍然支持绝大多数的网络应用程序，如 HTML5游戏、静态网站等。
+ 
+## 我的数据是保密的吗？
+是的，你操作的文件不会离开你的电脑。这些文件不会被其他任何人访问到，此页面提供的链接也只能在您本地生效，它只为你工作，加载过程中也没有任何东西通过网络进行传输。
 
-- The files are served from a subfolder. Serving from the origin root is not supported as it complicates loading this page and supporting multiple hosts.
-- The hosted files cannot register their own service worker. This is because the browser enforces that the SW script is loaded from the network, where it will return 404.
+## 这网站是谁做的？
+你好！我是 [@AshleyGullen](https://twitter.com/ashleygullen)，我是 Scirra 公司的创始人，我们制作了一款游戏开发工具 [Construct](https://www.construct.net/)，我也是这个项目的主开发者。
 
-However since the vast majority of web APIs will work, this should support most client-side web content, such as HTML5 games, static websites, and so on.
-
-## Is my data kept private?
-Yes. Your chosen files will not leave your computer. The files will not be accessible by anyone else, the provided link only works for you, and nothing is transmitted over a network while loading it.
-
-## Who made this?
-Hi, I'm [@AshleyGullen](https://twitter.com/ashleygullen), founder of Scirra and lead developer on [Construct](https://www.construct.net/).
-
+## 贡献翻译
+xhxiaiein
