@@ -70,7 +70,7 @@ if (window.showDirectoryPicker)
 	if (savedFolderHandle)
 	{
 		const useLastFolderButton = document.getElementById("uselastfolder");
-		useLastFolderButton.textContent = `上次使用的文件夹 (${savedFolderHandle.name})`;
+		useLastFolderButton.textContent = `打开上次的文件夹 (${savedFolderHandle.name})`;
 		useLastFolderButton.removeAttribute("hidden");
 		useLastFolderButton.addEventListener("click", async () =>
 		{
