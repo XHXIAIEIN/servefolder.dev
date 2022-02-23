@@ -70,7 +70,7 @@ if (window.showDirectoryPicker)
 	if (savedFolderHandle)
 	{
 		const useLastFolderButton = document.getElementById("uselastfolder");
-		useLastFolderButton.textContent = `Use last folder (${savedFolderHandle.name})`;
+		useLastFolderButton.textContent = `上次使用的文件夹 (${savedFolderHandle.name})`;
 		useLastFolderButton.removeAttribute("hidden");
 		useLastFolderButton.addEventListener("click", async () =>
 		{
