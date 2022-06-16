@@ -26,7 +26,7 @@
 是的，你操作的文件不会离开你的电脑。这些文件不会被其他任何人访问到，此页面提供的链接也只能在您本地生效，它只为你工作，加载过程中也没有任何东西通过网络进行传输。
 
 ## 这网站是谁做的？
-你好！我是 [@AshleyGullen](https://twitter.com/ashleygullen)，我是 Scirra 公司的创始人，我们制作了一款游戏开发工具 [Construct3](https://www.construct.net/)，同时，我也是此项目的主开发者。
+你好！我是 [@AshleyGullen](https://twitter.com/ashleygullen)，我是 Scirra 公司的创始人，我们制作了一款游戏开发工具 [Construct3](https://www.construct.net/)。
 
 ## 贡献翻译
 [@xhxiaiein](https://github.com/XHXIAIEIN)
